@@ -53,6 +53,13 @@ h1{font-size:clamp(40px,11vw,64px);line-height:.98;letter-spacing:-2.4px;margin:
 .err{display:none;text-align:center;padding:48px 0}
 .err h2{font-size:26px;letter-spacing:-.8px;margin:0 0 10px}
 .err p{color:var(--mute);line-height:1.45;max-width:32ch;margin:0 auto 22px}
+.sheet{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.72);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px}
+.sheet[hidden]{display:none}
+.sheet-body{width:min(100%,360px)}
+.sheet-body img{max-width:100%;max-height:66vh;width:auto;margin:0 auto;border-radius:18px;display:block;-webkit-touch-callout:default;user-select:auto}
+.sheet-text{background:var(--bg);color:var(--ink);border-radius:16px;padding:18px;font-size:16px;line-height:1.45;margin:0;user-select:text;-webkit-user-select:text}
+.sheet-note{color:#fff;font-size:15px;line-height:1.4;text-align:center;max-width:32ch;margin:16px 0 14px}
+.sheet-x{background:#fff;color:#111;border:0;border-radius:99px;height:46px;padding:0 28px;font-weight:700;font-size:15px}
 footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 40px;font-size:13px;color:var(--mute);line-height:1.6}
 footer a{color:inherit}
 </style>
@@ -102,6 +109,7 @@ footer a{color:inherit}
     <span data-t="foot"></span> <a href="https://instagram.com/pintertag" rel="noopener">@pintertag</a>
   </footer>
 </div>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true"><div class="sheet-body"></div><p class="sheet-note"></p><button class="sheet-x" data-t="close"></button></div>
 <input id="file" type="file" accept="image/*" multiple hidden>
 
 <script>
@@ -119,13 +127,13 @@ var lang = (function(){ try { var s = localStorage.getItem('pt-lang'); if (s) re
       busy:'Reading your grid…', errH:'No grid found.', errP:'Take a screenshot of your Instagram profile with the grid filling most of the screen, then try again.', tryAgain:'Try another screenshot',
       pink:'Pink', cream:'Cream', black:'Black', share:'Share to story', dare:'Challenge a friend', another:'Score another grid',
       more:'Only {n} posts read. Scroll a little on Instagram and add one more screenshot to complete 9.', read:'{n} posts read.',
-      dareText:'My grid scored {s}. What does yours score? ', foot:'pintertag — your feed’s art director. App coming soon.', saved:'Card saved.' },
+      dareText:'My grid scored {s}. What does yours score? ', foot:'pintertag — your feed’s art director. App coming soon.', saved:'Card saved.', close:'Close', hold:'Press and hold the card, then tap “Save to Photos”. Post it to your story from there.', copied:'Copied. Paste it to a friend.', copyIt:'Copy this and send it to a friend.' },
     tr: { h1:'Grid’in kaç alır?', lede:'Instagram profilinin ekran görüntüsünü yükle. Puanın ve story kartın saniyeler içinde hazır.',
       pick:'Ekran görüntüsü seç', priv:'Telefonunda çalışır. Hiçbir şey yüklenmez.', s1:'Instagram’da profilini aç, ekran görüntüsü al.', s2:'Buradan seç. En yeni 9 postu okuruz.', s3:'Puanını al, kartı story’de paylaş.',
       busy:'Grid’in okunuyor…', errH:'Grid bulunamadı.', errP:'Instagram profilinin, grid ekranın çoğunu kaplayacak şekilde ekran görüntüsünü al ve tekrar dene.', tryAgain:'Başka ekran görüntüsü seç',
       pink:'Pembe', cream:'Krem', black:'Siyah', share:'Story’de paylaş', dare:'Arkadaşına meydan oku', another:'Başka grid puanla',
       more:'Sadece {n} post okundu. Instagram’da biraz aşağı kaydırıp bir ekran görüntüsü daha ekle, 9’a tamamlansın.', read:'{n} post okundu.',
-      dareText:'Grid’im {s} aldı. Seninki kaç alır? ', foot:'pintertag — feed’in sanat yönetmeni. Uygulama yakında.', saved:'Kart kaydedildi.' }
+      dareText:'Grid’im {s} aldı. Seninki kaç alır? ', foot:'pintertag — feed’in sanat yönetmeni. Uygulama yakında.', saved:'Kart kaydedildi.', close:'Kapat', hold:'Karta basılı tut, “Fotoğraflar’a Kaydet”e dokun. Sonra story’de paylaş.', copied:'Kopyalandı. Arkadaşına yapıştır.', copyIt:'Bunu kopyala, arkadaşına gönder.' }
   };
   var $ = function(id){ return document.getElementById(id); };
   var t = function(k){ return (TX[lang] || TX.en)[k]; };
@@ -163,10 +171,14 @@ var lang = (function(){ try { var s = localStorage.getItem('pt-lang'); if (s) re
     $('cardImg').alt = (lang === 'tr' ? 'Grid puanı ' : 'Grid score ') + last.score; }
   async function share(){ if (!blob) return; var file = new File([blob], 'pintertag-' + last.score + '.png', { type: 'image/png' });
     try { if (navigator.canShare && navigator.canShare({ files: [file] })){ await navigator.share({ files: [file] }); return; } } catch(e){ if (e && e.name === 'AbortError') return; }
-    var a = document.createElement('a'); a.href = url; a.download = file.name; document.body.appendChild(a); a.click(); a.remove(); }
-  async function dare(){ var text = t('dareText').replace('{s}', last ? last.score : '');
-    try { if (navigator.share){ await navigator.share({ text: text, url: SITE }); return; } } catch(e){ if (e && e.name === 'AbortError') return; }
-    try { await navigator.clipboard.writeText(text + SITE); } catch(e){} }
+    /* no share sheet (in-app browsers, http): show the card big so it can be long-pressed and saved */
+    sheet('<img src="' + url + '" alt="">', t('hold')); }
+  async function dare(){ var text = t('dareText').replace('{s}', last ? last.score : '') + SITE;
+    try { if (navigator.share){ await navigator.share({ text: text }); return; } } catch(e){ if (e && e.name === 'AbortError') return; }
+    var ok = false; try { await navigator.clipboard.writeText(text); ok = true; } catch(e){}
+    sheet('<p class="sheet-text">' + text.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</p>', ok ? t('copied') : t('copyIt')); }
+  function sheet(inner, note){ var s = $('sheet'); s.querySelector('.sheet-body').innerHTML = inner; s.querySelector('.sheet-note').textContent = note; s.hidden = false; }
+  $('sheet').onclick = function(e){ if (e.target === this || e.target.closest('.sheet-x')) this.hidden = true; };
 
   $('pick').onclick = function(){ $('file').click(); };
   $('file').onchange = function(){ var f = this.files; if (f && f.length) run(f); this.value = ''; };

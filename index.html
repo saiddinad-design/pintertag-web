@@ -49,6 +49,7 @@ h1{font-size:clamp(40px,11vw,64px);line-height:.98;letter-spacing:-2.4px;margin:
 .meta{font-size:14px;color:var(--mute);margin:10px 0 18px}
 .acts{display:grid;gap:10px;justify-items:center}
 .ghost{background:none;border:1px solid var(--line);border-radius:99px;height:50px;padding:0 24px;font-size:15px;font-weight:600;width:min(100%,340px)}
+.ghost.plan{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:inherit;border-color:var(--ink)}
 .more{background:var(--soft);border:0;border-radius:16px;padding:14px 16px;font-size:14px;width:min(100%,340px);margin-bottom:6px}
 .err{display:none;text-align:center;padding:48px 0}
 .err h2{font-size:26px;letter-spacing:-.8px;margin:0 0 10px}
@@ -100,13 +101,14 @@ footer a{color:inherit}
         <button class="more" id="more" data-act="more" hidden data-t="more"></button>
         <button class="go" data-act="share" data-t="share"></button>
         <button class="ghost" data-act="dare" data-t="dare"></button>
+        <a class="ghost plan" href="app/" data-t="plan"></a>
         <button class="ghost" data-act="again" data-t="another"></button>
       </div>
     </section>
   </main>
 
   <footer>
-    <span data-t="foot"></span> <a href="https://instagram.com/pintertag" rel="noopener">@pintertag</a>
+    <span data-t="foot"></span> <a href="app/" data-t="openApp"></a> · <a href="https://instagram.com/pintertag" rel="noopener">@pintertag</a>
   </footer>
 </div>
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true"><div class="sheet-body"></div><p class="sheet-note"></p><button class="sheet-x" data-t="close"></button></div>
@@ -127,13 +129,13 @@ var lang = (function(){ try { var s = localStorage.getItem('pt-lang'); if (s) re
       busy:'Reading your grid…', errH:'No grid found.', errP:'Take a screenshot of your Instagram profile with the grid filling most of the screen, then try again.', tryAgain:'Try another screenshot',
       pink:'Pink', cream:'Cream', black:'Black', share:'Share to story', dare:'Challenge a friend', another:'Score another grid',
       more:'Only {n} posts read. Scroll a little on Instagram and add one more screenshot to complete 9.', read:'{n} posts read.',
-      dareText:'My grid scored {s}. What does yours score? ', foot:'pintertag — your feed’s art director. App coming soon.', saved:'Card saved.', close:'Close', hold:'Press and hold the card, then tap “Save to Photos”. Post it to your story from there.', copied:'Copied. Paste it to a friend.', copyIt:'Copy this and send it to a friend.' },
+      dareText:'My grid scored {s}. What does yours score? ', foot:'pintertag — your feed’s art director.', plan:'Plan your next 9 posts', openApp:'Open the planner', saved:'Card saved.', close:'Close', hold:'Press and hold the card, then tap “Save to Photos”. Post it to your story from there.', copied:'Copied. Paste it to a friend.', copyIt:'Copy this and send it to a friend.' },
     tr: { h1:'Grid’in kaç alır?', lede:'Instagram profilinin ekran görüntüsünü yükle. Puanın ve story kartın saniyeler içinde hazır.',
       pick:'Ekran görüntüsü seç', priv:'Telefonunda çalışır. Hiçbir şey yüklenmez.', s1:'Instagram’da profilini aç, ekran görüntüsü al.', s2:'Buradan seç. En yeni 9 postu okuruz.', s3:'Puanını al, kartı story’de paylaş.',
       busy:'Grid’in okunuyor…', errH:'Grid bulunamadı.', errP:'Instagram profilinin, grid ekranın çoğunu kaplayacak şekilde ekran görüntüsünü al ve tekrar dene.', tryAgain:'Başka ekran görüntüsü seç',
       pink:'Pembe', cream:'Krem', black:'Siyah', share:'Story’de paylaş', dare:'Arkadaşına meydan oku', another:'Başka grid puanla',
       more:'Sadece {n} post okundu. Instagram’da biraz aşağı kaydırıp bir ekran görüntüsü daha ekle, 9’a tamamlansın.', read:'{n} post okundu.',
-      dareText:'Grid’im {s} aldı. Seninki kaç alır? ', foot:'pintertag — feed’in sanat yönetmeni. Uygulama yakında.', saved:'Kart kaydedildi.', close:'Kapat', hold:'Karta basılı tut, “Fotoğraflar’a Kaydet”e dokun. Sonra story’de paylaş.', copied:'Kopyalandı. Arkadaşına yapıştır.', copyIt:'Bunu kopyala, arkadaşına gönder.' }
+      dareText:'Grid’im {s} aldı. Seninki kaç alır? ', foot:'pintertag — feed’in sanat yönetmeni.', plan:'Sonraki 9 postunu planla', openApp:'Planlayıcıyı aç', saved:'Kart kaydedildi.', close:'Kapat', hold:'Karta basılı tut, “Fotoğraflar’a Kaydet”e dokun. Sonra story’de paylaş.', copied:'Kopyalandı. Arkadaşına yapıştır.', copyIt:'Bunu kopyala, arkadaşına gönder.' }
   };
   var $ = function(id){ return document.getElementById(id); };
   var t = function(k){ return (TX[lang] || TX.en)[k]; };

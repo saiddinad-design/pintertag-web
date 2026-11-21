@@ -3,12 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Pintertag Grid Score</title>
-<meta name="description" content="What does your Instagram grid score? Upload a profile screenshot and get your score and a story card in seconds. Nothing is uploaded.">
+<title>pintertag — What does your grid score?</title>
+<meta name="description" content="pintertag is your feed’s art director. Upload an Instagram profile screenshot and get your grid score and a story card in seconds.">
 <meta property="og:title" content="What does your grid score? — pintertag">
 <meta property="og:description" content="Upload an Instagram profile screenshot. Get your grid score and a story card. Nothing leaves your phone.">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="assets/logo.png">
+<link rel="canonical" href="https://pintertag.com/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="pintertag">
+<meta property="og:url" content="https://pintertag.com/">
+<meta property="og:image" content="https://pintertag.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pintertag.com/assets/og.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"pintertag","alternateName":"Pintertag","url":"https://pintertag.com/"}</script>
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="stylesheet" href="intro.css?v=1">
 <style>
@@ -148,7 +161,7 @@ var lang = (function(){ try { var s = localStorage.getItem('pt-lang'); if (s) re
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-t]').forEach(function(el){ el.textContent = t(el.dataset.t); });
     $('lang').textContent = lang === 'tr' ? 'EN' : 'TR';
-    document.title = lang === 'tr' ? 'Pintertag Grid Puanı' : 'Pintertag Grid Score';
+    document.title = lang === 'tr' ? 'pintertag — Grid’in kaç alır?' : 'pintertag — What does your grid score?';
     document.querySelectorAll('.sw').forEach(function(b){ var on = b.dataset.theme === theme; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
     if (last) meta();
   }

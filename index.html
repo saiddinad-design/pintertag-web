@@ -10,6 +10,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="stylesheet" href="intro.css?v=1">
 <style>
 :root{
   --bg:#ffffff; --ink:#111111; --mute:#6b6b6b; --line:#e4e4e2; --soft:#f4f4f2; --btn:#111111; --btn-ink:#ffffff;
@@ -29,8 +30,8 @@ header{display:flex;align-items:center;justify-content:space-between;height:64px
 .hero{padding:56px 0 28px;text-align:center}
 h1{font-size:clamp(40px,11vw,64px);line-height:.98;letter-spacing:-2.4px;margin:0 0 18px;font-weight:700}
 .lede{font-size:17px;line-height:1.45;color:var(--mute);margin:0 auto 28px;max-width:30ch}
-.go{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--btn);color:var(--btn-ink);border:0;border-radius:99px;height:56px;padding:0 30px;font-size:17px;font-weight:700;width:min(100%,340px)}
-.go:focus-visible,.ghost:focus-visible,.sw:focus-visible,.lang:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--btn);color:var(--btn-ink);border:0;border-radius:99px;height:56px;padding:0 30px;font-size:17px;font-weight:700;width:min(100%,340px)}
+.cta:focus-visible,.ghost:focus-visible,.sw:focus-visible,.lang:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .priv{font-size:13px;color:var(--mute);margin:14px 0 0}
 .how{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:44px 0 0;padding:0;list-style:none;counter-reset:s}
 .how li{background:var(--soft);border-radius:18px;padding:16px 12px;font-size:13px;line-height:1.35;text-align:left;counter-increment:s}
@@ -66,6 +67,7 @@ footer a{color:inherit}
 </style>
 </head>
 <body>
+<script src="launch.js?v=1"></script>
 <div class="wrap">
   <header>
     <a class="mark" href="./" aria-label="pintertag"><img src="assets/logo.png" alt="">pintertag</a>
@@ -76,7 +78,7 @@ footer a{color:inherit}
     <section class="hero" id="start">
       <h1 data-t="h1"></h1>
       <p class="lede" data-t="lede"></p>
-      <button class="go" id="pick" data-t="pick"></button>
+      <button class="cta" id="pick" data-t="pick"></button>
       <p class="priv" data-t="priv"></p>
       <ol class="how"><li data-t="s1"></li><li data-t="s2"></li><li data-t="s3"></li></ol>
     </section>
@@ -86,7 +88,7 @@ footer a{color:inherit}
     <section class="err" id="err">
       <h2 data-t="errH"></h2>
       <p data-t="errP"></p>
-      <button class="go" data-act="again" data-t="tryAgain"></button>
+      <button class="cta" data-act="again" data-t="tryAgain"></button>
     </section>
 
     <section class="res" id="res">
@@ -99,7 +101,7 @@ footer a{color:inherit}
       <p class="meta" id="meta"></p>
       <div class="acts">
         <button class="more" id="more" data-act="more" hidden data-t="more"></button>
-        <button class="go" data-act="share" data-t="share"></button>
+        <button class="cta" data-act="share" data-t="share"></button>
         <button class="ghost" data-act="dare" data-t="dare"></button>
         <a class="ghost plan" href="app/" data-t="plan"></a>
         <button class="ghost" data-act="again" data-t="another"></button>

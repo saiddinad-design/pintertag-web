@@ -116,7 +116,7 @@ footer a{color:inherit}
         <button class="more" id="more" data-act="more" hidden data-t="more"></button>
         <button class="cta" data-act="share" data-t="share"></button>
         <button class="ghost" data-act="dare" data-t="dare"></button>
-        <a class="ghost plan" href="app/" data-t="plan"></a>
+        <a class="ghost plan" href="app/?signup=1" data-t="plan"></a>
         <button class="ghost" data-act="again" data-t="another"></button>
       </div>
     </section>
@@ -144,13 +144,13 @@ var lang = (function(){ try { var s = localStorage.getItem('pt-lang'); if (s) re
       busy:'Reading your grid…', errH:'No grid found.', errP:'Take a screenshot of your Instagram profile with the grid filling most of the screen, then try again.', tryAgain:'Try another screenshot',
       pink:'Pink', cream:'Cream', black:'Black', share:'Share to story', dare:'Challenge a friend', another:'Score another grid',
       more:'Only {n} posts read. Scroll a little on Instagram and add one more screenshot to complete 9.', read:'{n} posts read.',
-      dareText:'My grid scored {s}. What does yours score? ', foot:'pintertag — your feed’s art director.', plan:'Plan your next 9 posts', openApp:'Open the planner', saved:'Card saved.', close:'Close', hold:'Press and hold the card, then tap “Save to Photos”. Post it to your story from there.', copied:'Copied. Paste it to a friend.', copyIt:'Copy this and send it to a friend.' },
+      dareText:'My grid scored {s}. What does yours score? ', foot:'pintertag — your feed’s art director.', plan:'Plan your next 9 posts · free account', openApp:'Open the planner', saved:'Card saved.', close:'Close', hold:'Press and hold the card, then tap “Save to Photos”. Post it to your story from there.', copied:'Copied. Paste it to a friend.', copyIt:'Copy this and send it to a friend.' },
     tr: { h1:'Grid’in kaç alır?', lede:'Instagram profilinin ekran görüntüsünü yükle. Puanın ve story kartın saniyeler içinde hazır.',
       pick:'Ekran görüntüsü seç', priv:'Telefonunda çalışır. Hiçbir şey yüklenmez.', s1:'Instagram’da profilini aç, ekran görüntüsü al.', s2:'Buradan seç. En yeni 9 postu okuruz.', s3:'Puanını al, kartı story’de paylaş.',
       busy:'Grid’in okunuyor…', errH:'Grid bulunamadı.', errP:'Instagram profilinin, grid ekranın çoğunu kaplayacak şekilde ekran görüntüsünü al ve tekrar dene.', tryAgain:'Başka ekran görüntüsü seç',
       pink:'Pembe', cream:'Krem', black:'Siyah', share:'Story’de paylaş', dare:'Arkadaşına meydan oku', another:'Başka grid puanla',
       more:'Sadece {n} post okundu. Instagram’da biraz aşağı kaydırıp bir ekran görüntüsü daha ekle, 9’a tamamlansın.', read:'{n} post okundu.',
-      dareText:'Grid’im {s} aldı. Seninki kaç alır? ', foot:'pintertag — feed’in sanat yönetmeni.', plan:'Sonraki 9 postunu planla', openApp:'Planlayıcıyı aç', saved:'Kart kaydedildi.', close:'Kapat', hold:'Karta basılı tut, “Fotoğraflar’a Kaydet”e dokun. Sonra story’de paylaş.', copied:'Kopyalandı. Arkadaşına yapıştır.', copyIt:'Bunu kopyala, arkadaşına gönder.' }
+      dareText:'Grid’im {s} aldı. Seninki kaç alır? ', foot:'pintertag — feed’in sanat yönetmeni.', plan:'Sonraki 9 postunu planla · ücretsiz hesap', openApp:'Planlayıcıyı aç', saved:'Kart kaydedildi.', close:'Kapat', hold:'Karta basılı tut, “Fotoğraflar’a Kaydet”e dokun. Sonra story’de paylaş.', copied:'Kopyalandı. Arkadaşına yapıştır.', copyIt:'Bunu kopyala, arkadaşına gönder.' }
   };
   var $ = function(id){ return document.getElementById(id); };
   var t = function(k){ return (TX[lang] || TX.en)[k]; };

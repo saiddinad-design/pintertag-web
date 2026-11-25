@@ -185,7 +185,7 @@ var lang = (function(){ try { var s = localStorage.getItem('pt-lang'); if (s) re
   function paint(){
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-t]').forEach(function(el){ el.textContent = t(el.dataset.t); });
-    var sh = $('shots'); if (sh) sh.alt = lang === 'tr' ? 'Pintertag uygulaması: grid planı ve çekimin en iyisi' : 'The Pintertag app: grid plan and best of your shoot';
+    var sh = $('shots'); if (sh) sh.alt = lang === 'tr' ? 'Pintertag uygulaması: grid planı ve karusel puanı' : 'The Pintertag app: grid plan and carousel score';
     $('lang').textContent = lang === 'tr' ? 'EN' : 'TR';
     document.title = lang === 'tr' ? 'pintertag — Grid’in kaç alır?' : 'pintertag — What does your grid score?';
     document.querySelectorAll('.sw').forEach(function(b){ var on = b.dataset.theme === theme; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>pintertag — What does your grid score?</title>
-<meta name="description" content="pintertag is your feed’s art director. Upload an Instagram profile screenshot and get your grid score and a story card in seconds.">
-<meta property="og:title" content="What does your grid score? — pintertag">
-<meta property="og:description" content="Upload an Instagram profile screenshot. Get your grid score and a story card. Nothing leaves your phone.">
+<title>Pintertag — Instagram grid score, feed planner and carousel score</title>
+<meta name="description" content="Pintertag is your feed’s art director. Score your Instagram grid from a screenshot, plan your next 9 posts, score carousels out of 10, pick the best frames from a shoot and check if a photo fits your grid. Free, works on your phone.">
+<meta property="og:title" content="Pintertag — your feed’s art director">
+<meta property="og:description" content="Grid score, a 9-post feed planner, carousel score and shoot picker for Instagram. Photos stay on your phone.">
 <meta name="theme-color" content="#ffffff">
 <link rel="canonical" href="https://pintertag.com/">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -21,7 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://pintertag.com/assets/og.png?v=2">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"pintertag","alternateName":"Pintertag","url":"https://pintertag.com/"}</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"Pintertag","alternateName":"pintertag","url":"https://pintertag.com/"},{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Pintertag","url":"https://pintertag.com/app/","applicationCategory":"DesignApplication","operatingSystem":"Web, iOS, Android","description":"Instagram feed planner and art director: grid score, 9-post planner, carousel score, shoot picker and photo fit check.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Grid score from an Instagram profile screenshot, with a shareable story card","Feed planner: arrange and preview your next 9 posts, with a post calendar","Separate brand and personal grids","Carousel score out of 10 for hook, one family, flow and ending","Shoot picker: choose the best frames from up to 40 photos and get a carousel suggestion","Fits my grid: check whether a new photo matches your feed before posting","Free account with cloud backup"],"creator":{"@type":"Organization","name":"Pintertag","url":"https://pintertag.com/","sameAs":["https://www.instagram.com/pintertag/"]}}]</script>
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="stylesheet" href="intro.css?v=1">
 <style>
@@ -187,7 +187,7 @@ var lang = (function(){ try { var s = localStorage.getItem('pt-lang'); if (s) re
     document.querySelectorAll('[data-t]').forEach(function(el){ el.textContent = t(el.dataset.t); });
     var sh = $('shots'); if (sh) sh.alt = lang === 'tr' ? 'Pintertag uygulaması: grid planı ve karusel puanı' : 'The Pintertag app: grid plan and carousel score';
     $('lang').textContent = lang === 'tr' ? 'EN' : 'TR';
-    document.title = lang === 'tr' ? 'pintertag — Grid’in kaç alır?' : 'pintertag — What does your grid score?';
+    document.title = lang === 'tr' ? 'Pintertag — Instagram grid puanı, feed planlayıcı ve karusel puanı' : 'Pintertag — Instagram grid score, feed planner and carousel score';
     document.querySelectorAll('.sw').forEach(function(b){ var on = b.dataset.theme === theme; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
     if (last) meta();
   }

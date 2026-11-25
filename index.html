@@ -86,6 +86,7 @@ h1{font-size:clamp(40px,11vw,64px);line-height:.98;letter-spacing:-2.4px;margin:
 .feat li{display:grid;grid-template-columns:1fr;gap:2px;padding:14px 0;border-bottom:1px solid var(--line)}
 .feat b{font-size:16px;letter-spacing:-.2px}
 .feat span{font-size:14px;color:var(--mute);line-height:1.4}
+.shots{display:block;width:calc(100% + 16px);max-width:none;height:auto;margin:4px -8px 18px}
 .also .ghost.plan{width:100%;max-width:none;background:var(--ink);color:var(--bg);font-weight:700}
 footer{border-top:1px solid var(--line);margin-top:40px;padding:24px 0 40px;font-size:13px;color:var(--mute);line-height:1.6}
 footer a{color:inherit}
@@ -109,6 +110,7 @@ footer a{color:inherit}
       <div class="also">
         <h2 data-t="alsoH"></h2>
         <p data-t="alsoP"></p>
+        <img class="shots" src="assets/app-phones.webp" width="980" height="1120" alt="" loading="lazy" decoding="async" id="shots">
         <ul class="feat">
           <li><b data-t="f1"></b><span data-t="f1s"></span></li>
           <li><b data-t="f2"></b><span data-t="f2s"></span></li>
@@ -183,6 +185,7 @@ var lang = (function(){ try { var s = localStorage.getItem('pt-lang'); if (s) re
   function paint(){
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-t]').forEach(function(el){ el.textContent = t(el.dataset.t); });
+    var sh = $('shots'); if (sh) sh.alt = lang === 'tr' ? 'Pintertag uygulaması: grid planı ve çekimin en iyisi' : 'The Pintertag app: grid plan and best of your shoot';
     $('lang').textContent = lang === 'tr' ? 'EN' : 'TR';
     document.title = lang === 'tr' ? 'pintertag — Grid’in kaç alır?' : 'pintertag — What does your grid score?';
     document.querySelectorAll('.sw').forEach(function(b){ var on = b.dataset.theme === theme; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });

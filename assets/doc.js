@@ -9,12 +9,12 @@
   if (doc === 'support'){
     const S = tr ? {
       h: 'Destek', p: 'Bir sorun, öneri ya da veri talebin varsa yaz. Genelde 2 iş günü içinde yanıtlarız.',
-      q: [['Bize ulaş', 'tagpinter@gmail.com'], ['Hesabımı nasıl silerim?', 'Uygulamada Ayarlar > hesap kartı (e-postan) > “Hesabımı sil”. Buluttaki planın ve fotoğrafların hemen, hesap kaydın kalıcı olarak silinir. Hesap açmadıysan verilerin sadece telefonunda durur; Ayarlar > Yedekleme > “Bu cihazdaki tüm verileri sil” ile temizlenir.'],
+      q: [['Bize ulaş', 'support@pintertag.com'], ['Hesabımı nasıl silerim?', 'Uygulamada Ayarlar > hesap kartı (e-postan) > “Hesabımı sil”. Buluttaki planın ve fotoğrafların hemen, hesap kaydın kalıcı olarak silinir. Hesap açmadıysan verilerin sadece telefonunda durur; Ayarlar > Yedekleme > “Bu cihazdaki tüm verileri sil” ile temizlenir.'],
         ['Fotoğraflarım nerede saklanıyor?', 'Telefonunda. Ücretsiz hesap açarsan yedeğin AB’deki (İrlanda) sunucuda, yalnızca sana açık tutulur.'],
         ['Instagram hesabıma bağlanıyor mu?', 'Hayır. Pintertag Instagram şifreni istemez ve senin adına paylaşım yapmaz. Paylaşımı telefonunun paylaşım menüsüyle sen yaparsın.'],
         ['Ücretli mi?', 'Şu an tüm özellikler ücretsiz.']] } : {
       h: 'Support', p: 'Questions, ideas or a data request? Write to us. We usually reply within 2 business days.',
-      q: [['Contact', 'tagpinter@gmail.com'], ['How do I delete my account?', 'In the app: Settings > account card (your email) > “Delete my account”. Your cloud plans and photos are deleted right away and your account record permanently. Without an account, your data lives only on your phone; Settings > Backup > “Delete all data on this device” clears it.'],
+      q: [['Contact', 'support@pintertag.com'], ['How do I delete my account?', 'In the app: Settings > account card (your email) > “Delete my account”. Your cloud plans and photos are deleted right away and your account record permanently. Without an account, your data lives only on your phone; Settings > Backup > “Delete all data on this device” clears it.'],
         ['Where are my photos stored?', 'On your phone. With a free account, your backup is kept on a server in the EU (Ireland) that only you can open.'],
         ['Does it connect to my Instagram account?', 'No. Pintertag never asks for your Instagram password and never posts for you. You share through your phone’s share menu.'],
         ['Is it free?', 'Every feature is free right now.']] };

@@ -1,0 +1,19 @@
+name: SEO ping and speed check
+on: workflow_dispatch
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: IndexNow (Bing, Yandex, others)
+        run: |
+          sleep 60
+          curl -s -o /dev/null -w "key file %{http_code}\n" https://pintertag.com/.txt
+          curl -s -w "\nindexnow %{http_code}\n" -X POST https://api.indexnow.org/indexnow -H 'Content-Type: application/json; charset=utf-8' -d '{"host":"pintertag.com","key":"","keyLocation":"https://pintertag.com/.txt","urlList":["https://pintertag.com/","https://pintertag.com/app/","https://pintertag.com/privacy/","https://pintertag.com/support/","https://pintertag.com/terms/"]}'
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - name: Lighthouse (mobile)
+        run: |
+          for u in https://pintertag.com/ https://pintertag.com/app/; do
+            npx -y lighthouse@12 "$u" --quiet --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=/tmp/lh.json >/dev/null 2>&1
+            node -e "const r=require('/tmp/lh.json');const c=r.categories;console.log(process.argv[1],Object.keys(c).map(k=>k+'='+Math.round(c[k].score*100)).join(' '),'LCP='+r.audits['largest-contentful-paint'].displayValue,'CLS='+r.audits['cumulative-layout-shift'].displayValue);const f=Object.values(r.audits).filter(a=>a.score!==null&&a.score<0.9&&a.scoreDisplayMode!=='informative'&&a.scoreDisplayMode!=='notApplicable').slice(0,12).map(a=>'  - '+a.title+(a.displayValue?' ('+a.displayValue+')':''));console.log(f.join('\n'))" "$u"
+          done
